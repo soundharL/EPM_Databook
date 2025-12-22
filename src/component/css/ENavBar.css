@@ -1,0 +1,167 @@
+/* ================= NAVBAR ================= */
+.enavbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* Gradient background */
+  background: linear-gradient(
+    135deg,
+    #024999 0%,
+    #0b5ed7 50%,
+    #1e88e5 100%
+  );
+
+  color: #ffffff;
+  padding: 12px 12px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 42px;
+  z-index: 1000;
+
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.25),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* ================= LEFT ================= */
+.enavbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.enavbar-logo {
+  width: 38px;
+  height: 38px;
+}
+
+.enavbar-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+/* ================= RIGHT ================= */
+.enavbar-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ================= TIMEZONE ================= */
+.timezone {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.timezone-label {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.timezone span {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Select (Gradient + Glass) */
+.timezone select,
+select {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.05)
+  );
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  backdrop-filter: blur(4px);
+}
+
+select option {
+  color: #000000;
+}
+
+/* ================= REFRESH BUTTON ================= */
+.refresh-btn {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.05)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.refresh-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: rotate(90deg);
+}
+
+/* ================= AVATAR ================= */
+.avatar-wrapper {
+  position: relative;
+  margin-right: 16px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffffff, #e3f2fd);
+  color: #024999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* ================= DROPDOWN ================= */
+.avatar-dropdown {
+  position: absolute;
+  top: 44px;
+  right: 0;
+  background: linear-gradient(180deg, #ffffff, #f5f7fa);
+  color: #333333;
+  min-width: 140px;
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  z-index: 2000;
+}
+
+/* Dropdown items */
+.dropdown-item {
+  padding: 10px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background: #e3f2fd;
+}
+
+.dropdown-item.logout {
+  color: #e53935;
+  font-weight: 600;
+}

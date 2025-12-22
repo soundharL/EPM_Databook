@@ -1,0 +1,76 @@
+
+.app-field {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* INPUT */
+.app-field .app-input {
+  width: 100%;
+  padding: 12px 12px 8px 12px;
+
+  font-size: 14px;
+  color: #333;
+
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #cfd6e4;
+  border-radius: 0;
+
+  box-sizing: border-box;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Remove browser styles */
+.app-field .app-input:focus {
+  outline: none;
+  border-bottom-color: #0052cc;
+  box-shadow: 0 2px 0 0 #0052cc;
+}
+
+/* LABEL */
+.app-field label {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+
+  font-size: 14px;
+  color: #9aa3b2;
+  pointer-events: none;
+
+  display: flex;
+}
+
+/* Individual characters (wave effect) */
+.app-field label span {
+  transition: 0.25s ease;
+  transition-delay: calc(var(--i) * 0.05s);
+}
+
+/* FLOAT ON FOCUS OR VALUE */
+.app-field .app-input:focus ~ label span,
+.app-field .app-input:not(:placeholder-shown) ~ label span {
+  transform: translateY(-18px);
+  font-size: 12px;
+  color: #0052cc;
+}
+
+/* ERROR STATE */
+.app-field.error .app-input {
+  border-bottom-color: #d32f2f;
+}
+
+.app-field.error label span {
+  color: #d32f2f;
+}
+
+/* DISABLED */
+.app-field .app-input:disabled {
+  border-bottom-color: #ccc;
+  background-color: transparent;
+  cursor: not-allowed;
+}

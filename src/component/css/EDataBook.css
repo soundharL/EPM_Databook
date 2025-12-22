@@ -1,0 +1,193 @@
+/* ===== Layout Wrapper ===== */
+.databook-container {
+  margin-top: 64px; /* navbar offset */
+  height: calc(100vh - 64px);
+  display: flex;
+  overflow: hidden;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ===== LEFT SLIDE BAR (Glass Effect) ===== */
+.databook-sidebar {
+  width: 220px;
+  background: rgb(2 73 153 / 11%) ;
+  backdrop-filter: blur(10px);              /* blur background behind */
+  -webkit-backdrop-filter: blur(10px);      /* Safari support */
+  border-right: 1px solid rgba(255, 255, 255, 0.3); /* subtle border */
+  border-radius: 0 12px 12px 0;             /* rounded right edges */
+  color: #000000;
+  transition: width 0.3s ease, background 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05); /* subtle shadow */
+}
+
+.databook-sidebar.closed {
+  width: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Sidebar header */
+.databook-sidebar h4.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 16px;
+  margin: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  color: #0052cc;
+}
+
+.databook-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 16px;
+}
+
+.databook-sidebar li.sidebar-item {
+  display: flex;
+  align-items: center;         /* vertical center */
+  gap: 10px;                   /* space between icon & text */
+  font-size: 14px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+}
+
+.databook-sidebar li.sidebar-item span.side-text {
+  color: #000000;
+  font-weight: 600;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+}
+
+.databook-sidebar li.sidebar-item:hover {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.databook-sidebar li.sidebar-item.active {
+  background: rgba(0, 82, 204, 0.1);
+  color: #0052cc;
+  font-weight: 600;
+}
+
+.sidebar-icon {
+  font-size: 18px;
+}
+
+/* ===== MAIN PAGE ===== */
+.databook-page {
+  flex: 1;
+  background: #ffffff;
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== Header ===== */
+.databook-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.collapse-icon {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.header-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* ===== Toolbar ===== */
+.databook-toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.toolbar-left,
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.toolbar-center {
+  position: relative;
+  flex: 1;
+  max-width: 300px;
+}
+
+.toolbar-center input {
+  width: 100%;
+  padding: 8px 10px 8px 32px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ===== Table ===== */
+.databook-table-wrapper {
+  flex: 1;
+  overflow: auto;
+}
+
+.databook-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+.databook-table th {
+  position: sticky;
+  top: 0;
+  background: #f5f7fa;
+  padding: 10px;
+  font-size: 13px;
+  text-align: left;
+}
+
+.databook-table td {
+  padding: 10px;
+  font-size: 13px;
+  border-top: 1px solid #eee;
+}
+
+.eye-icon {
+  cursor: pointer;
+  color: #0052cc;
+}
+.collapse-icon {
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
