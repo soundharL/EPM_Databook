@@ -13,6 +13,7 @@ import {
 } from '../assets/icons/icons';
 import EAllTools from './EAllTools';
 import EAnalyticsCases from './EAnalyticsCases';
+import EDataBooks from './EDataBooks';
 import './css/EDataBook.css';
 
 const DataBook = () => {
@@ -84,6 +85,7 @@ const DataBook = () => {
         {/* ================= CONTENT SWITCH ================= */}
         {selectedView === 'allTools' && <EAllTools />}
         {selectedView === 'analytics' && <EAnalyticsCases />}
+        {selectedView === 'databook' && <EDataBooks />}
        
       </div>
     </div>

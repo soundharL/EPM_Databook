@@ -31,7 +31,6 @@ const AppLayout = () => {
           <Route path="/StartPage" element={<EStartPage />} />
           <Route path="/StartPage/XPERIENCElogs" element={<XPERIENCElogs />} />
           <Route path="/StartPage/XPERIENCElogs/Databook" element={<DataBook />} />
-          <Route path="/StartPage/XPERIENCElogs/Databook/AllTools" element={<AllTools />} />
         </Routes>
       </div>
 
