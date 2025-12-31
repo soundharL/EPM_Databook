@@ -18,7 +18,7 @@ import './css/EDataBook.css';
 
 const DataBook = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [selectedView, setSelectedView] = useState('allTools');
+  const [selectedView, setSelectedView] = useState('databook'); // Default to Databook
 
   return (
     <div className="databook-container">
@@ -32,6 +32,13 @@ const DataBook = () => {
 
         <ul>
           <li
+            className={`sidebar-item ${selectedView === 'databook' ? 'active' : ''}`}
+            onClick={() => setSelectedView('databook')}
+          >
+            <FaFolderOpen className="sidebar-icon" /> <span className="side-text">Databook</span>
+          </li>
+
+          <li
             className={`sidebar-item ${selectedView === 'allTools' ? 'active' : ''}`}
             onClick={() => setSelectedView('allTools')}
           >
@@ -43,13 +50,6 @@ const DataBook = () => {
             onClick={() => setSelectedView('analytics')}
           >
             <MdAnalytics className="sidebar-icon" /> <span className="side-text">Analytics Case</span>
-          </li>
-
-          <li
-            className={`sidebar-item ${selectedView === 'databook' ? 'active' : ''}`}
-            onClick={() => setSelectedView('databook')}
-          >
-            <FaFolderOpen className="sidebar-icon" /> <span className="side-text">Databook</span>
           </li>
 
           <li
@@ -81,12 +81,11 @@ const DataBook = () => {
           </span>
         </div>
 
-
         {/* ================= CONTENT SWITCH ================= */}
+        {selectedView === 'databook' && <EDataBooks />}
         {selectedView === 'allTools' && <EAllTools />}
         {selectedView === 'analytics' && <EAnalyticsCases />}
-        {selectedView === 'databook' && <EDataBooks />}
-       
+        {/* You can add Reports component if available */}
       </div>
     </div>
   );
