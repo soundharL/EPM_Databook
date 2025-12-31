@@ -9,7 +9,7 @@ import EFooter from './component/EFooter.jsx';
 import EStartPage from './component/EStartPage.jsx';
 import XPERIENCElogs from './component/XPERIENCElogs.jsx';
 import DataBook from './component/EDataBook.jsx';
-import AllTools from './component/EAllTools.jsx';
+
 
 
 const AppLayout = () => {

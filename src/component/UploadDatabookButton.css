@@ -1,0 +1,33 @@
+
+.app-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.status-text {
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.status-text.pending {
+  color: #eab308; /* Yellow */
+}
+
+.status-text.success {
+  color: #16a34a; /* Green */
+}
+
+.status-text.error {
+  color: #dc2626; /* Red */
+}
+
+.rotate-icon {
+  display: inline-block;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

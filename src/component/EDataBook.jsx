@@ -13,7 +13,7 @@ import {
 } from '../assets/icons/icons';
 import EAllTools from './EAllTools';
 import EAnalyticsCases from './EAnalyticsCases';
-import EDataBooks from './EDataBooks';
+import EDataBooks from './EData_books';
 import './css/EDataBook.css';
 
 const DataBook = () => {
