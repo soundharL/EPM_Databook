@@ -1,0 +1,6 @@
+@EPMWebController_HostAddress = http://localhost:5285
+
+GET {{EPMWebController_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
