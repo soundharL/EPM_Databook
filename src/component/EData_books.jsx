@@ -2,16 +2,18 @@ import React, { useRef, useState } from "react";
 import "./UploadDatabookButton.css";
 import axios from "axios";
 
+import { ToastContainer, toast, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function DatabookUpload() {
   const zipInputRef = useRef(null);
   const folderInputRef = useRef(null);
 
   const [zipFile, setZipFile] = useState(null);
   const [folderFiles, setFolderFiles] = useState([]);
-  const [selectedType, setSelectedType] = useState(""); // "zip" | "folder"
+  const [selectedType, setSelectedType] = useState("");
 
   const [result, setResult] = useState(null);
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   // -------- ZIP --------
@@ -47,12 +49,20 @@ function DatabookUpload() {
   // -------- UPLOAD --------
   const uploadDatabook = async () => {
     if (selectedType === "zip" && !zipFile) {
-      alert("Please select a zip file");
+      toast.warn("Please select a ZIP file", {
+        position: "top-center",
+        autoClose: 1500,
+        transition: Bounce,
+      });
       return;
     }
 
     if (selectedType === "folder" && folderFiles.length === 0) {
-      alert("Please select a folder");
+      toast.warn("Please select a folder", {
+        position: "top-center",
+        autoClose: 1500,
+        transition: Bounce,
+      });
       return;
     }
 
@@ -69,8 +79,11 @@ function DatabookUpload() {
     }
 
     setLoading(true);
-    setError("");
     setResult(null);
+
+    const toastId = toast.loading("Processing databook...", {
+      position: "top-center",
+    });
 
     try {
       const response = await axios.post(
@@ -82,12 +95,22 @@ function DatabookUpload() {
       );
 
       setResult(response.data);
+
+      toast.update(toastId, {
+        render: response.data.message || "Databook processed successfully",
+        type: "success",
+        isLoading: false,
+        autoClose: 3000,
+        transition: Bounce,
+      });
     } catch (err) {
-      if (err.response) {
-        setError(err.response.data?.message || "API error");
-      } else {
-        setError("Server not reachable");
-      }
+      toast.update(toastId, {
+        render: err.response?.data?.message || "Server not reachable",
+        type: "error",
+        isLoading: false,
+        autoClose: 4000,
+        transition: Bounce,
+      });
     } finally {
       setLoading(false);
     }
@@ -127,17 +150,20 @@ function DatabookUpload() {
         onChange={handleFolderChange}
       />
 
-      {/* Selected Info */}
-      <div style={{ marginTop: 15 }}>
+      {/* Selected Info (UI, NOT Toast) */}
+      <div style={{ marginTop: 12 }}>
         {selectedType === "zip" && zipFile && (
-          <p>✅ ZIP Selected: <b>{zipFile.name}</b></p>
+          <p style={{ color: "green" }}>
+            ✅ ZIP Selected: <b>{zipFile.name}</b>
+          </p>
         )}
 
         {selectedType === "folder" && folderFiles.length > 0 && (
-          <p>
-            ✅ Folder Selected: <b>{folderFiles[0].webkitRelativePath.split("/")[0]}</b>
+          <p style={{ color: "green" }}>
+            ✅ Folder Selected:{" "}
+            <b>{folderFiles[0].webkitRelativePath.split("/")[0]}</b>
             <br />
-            📄 Files: {folderFiles.length}
+            📄 Files Count: {folderFiles.length}
           </p>
         )}
       </div>
@@ -151,16 +177,16 @@ function DatabookUpload() {
         {loading ? "Processing..." : "Process Databook"}
       </button>
 
-      {/* Error */}
-      {error && <p style={{ color: "red" }}>{error}</p>}
-
-      {/* Result */}
+      {/* Result (Optional UI Info) */}
       {result && (
         <div style={{ marginTop: 20 }}>
           <h3>Status: {result.success ? "Success" : "Failed"}</h3>
           <p>{result.message}</p>
         </div>
       )}
+
+      {/* Toast Container */}
+      <ToastContainer />
     </div>
   );
 }
