@@ -2,33 +2,50 @@ import React, { useRef, useState } from "react";
 import "./UploadDatabookButton.css";
 
 const UploadDatabookButton = () => {
-  const fileInputRef = useRef(null);
-  const [fileName, setFileName] = useState(""); // State to store file name
-
-  const handleButtonClick = () => {
-    fileInputRef.current.click();
-  };
-
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      setFileName(file.name); // Update state with file name
-      console.log("Selected file:", file.name);
-    }
-  };
+  const zipInputRef = useRef(null);
+  const folderInputRef = useRef(null);
+  const [fileName, setFileName] = useState("");
 
   return (
-    <div style={{ padding: "20px", display: "flex", alignItems: "center", gap: "10px" }}>
-      <button className="app-btn" onClick={handleButtonClick}>
-        + Upload Databook
-      </button>
-      {fileName && <span>{fileName}</span>} {/* Display file name next to button */}
+    <div style={{ padding: "20px", display: "flex", gap: "10px", alignItems: "center" }}>
       
+      {/* ZIP Upload */}
+      <button className="app-btn" onClick={() => zipInputRef.current.click()}>
+        📦 Upload Databook ZIP
+      </button>
+
+      {/* Folder Upload */}
+      <button className="app-btn" onClick={() => folderInputRef.current.click()}>
+        📁 Upload Databook Folder
+      </button>
+
+      {fileName && <span>{fileName}</span>}
+
+      {/* ZIP input */}
       <input
         type="file"
-        ref={fileInputRef}
+        ref={zipInputRef}
+        accept=".zip"
         style={{ display: "none" }}
-        onChange={handleFileChange}
+        onChange={(e) => {
+          const file = e.target.files[0];
+          if (file) setFileName(file.name);
+        }}
+      />
+
+      {/* Folder input */}
+      <input
+        type="file"
+        ref={folderInputRef}
+        webkitdirectory="true"
+        directory="true"
+        multiple
+        style={{ display: "none" }}
+        onChange={(e) => {
+          if (e.target.files.length > 0) {
+            setFileName("Folder selected");
+          }
+        }}
       />
     </div>
   );
