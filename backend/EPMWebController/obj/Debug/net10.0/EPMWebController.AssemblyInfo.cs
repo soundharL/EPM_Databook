@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EPMWebController")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e65313b28b36565edf44568db87f0a5627a3578a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a430340a33a2287b4e5b9f1ae02bd46e70e6b742")]
 [assembly: System.Reflection.AssemblyProductAttribute("EPMWebController")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EPMWebController")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
